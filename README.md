@@ -21,7 +21,7 @@
      - Push your branch on your fork: `git push -u origin MYLOGIN`
      - Go to your repo in your browser and click the `Open a PR` button.
   - Keep pushing to your branch until the continuous integration system is green.
-  - When it is green, put the link to the PR in the course's spreadshit.
+  - When it is green, put the link to the PR in the course's spreadsheet.
 
 ## Getting Help
 
