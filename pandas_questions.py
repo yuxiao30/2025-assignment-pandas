@@ -52,17 +52,17 @@ def merge_referendum_and_areas(referendum, regions_and_departments):
     french living abroad, which all have a code that contains `Z`.
 
     DOM-TOM-COM departments are departements that are remote from metropolitan
-    France, like Guadaloupe, Reunion, or Tahiti.
+    France, like Guadaloupe, Reunion, or Tahiti.ls
+
     """
     ref = referendum.copy()
-    regions_and_departments = regions_and_departments.copy()
-    ref = ref[~ref["Department code"].astype(str).str.startswith("Z")]
-    regions_and_departments = regions_and_departments[regions_and_departments['code_reg'] != 'COM']
-    ref = ref.rename(columns={
-    'Department code': 'code_dep',
-    'Department name': 'name_dep'
-    })
-    merged=pd.merge(ref, regions_and_departments, on='code_dep')
+    rad = regions_and_departments.copy()
+    ref['Department code'] = (ref['Department code'].astype(str).str.zfill(2))
+    ref = ref[~ref["Department code"].astype(str).str.contains("Z", na=False)]
+
+
+    merged = ref.merge(rad, left_on="Department code", right_on="code_dep")
+
 
     return merged
 
