@@ -20,7 +20,9 @@ def load_data():
     """Load data from the CSV files referendum/regions/departments."""
     referendum = pd.read_csv("data/referendum.csv", sep=";", encoding="utf-8")
     regions = pd.read_csv("data/regions.csv", sep=",", encoding="utf-8")
-    departments = pd.read_csv("data/departments.csv", sep=",", encoding="utf-8")
+    departments = pd.read_csv(
+        "data/departments.csv", sep=",", encoding="utf-8"
+    )
     return referendum, regions, departments
 
 
