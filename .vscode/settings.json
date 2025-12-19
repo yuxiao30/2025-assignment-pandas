@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "2025-assignment-pandas"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
