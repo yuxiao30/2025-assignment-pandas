@@ -91,7 +91,9 @@ def plot_referendum_map(referendum_result_by_regions):
     geopandas.GeoDataFrame
         GeoDataFrame including a 'ratio' column.
     """
-    geo = gpd.read_file("data/regions.geojson").rename(columns={"code": "code_reg"})
+    geo = gpd.read_file("data/regions.geojson").rename(
+        columns={"code": "code_reg"}
+    )
     res = referendum_result_by_regions.reset_index().copy()
 
     gdf = geo.merge(res, on="code_reg", how="inner")
@@ -117,11 +119,15 @@ def main():
     """Run the full pipeline and plot the map."""
     referendum, regions, departments = load_data()
 
-    regions_and_departments = merge_regions_and_departments(regions, departments)
+    regions_and_departments = merge_regions_and_departments(
+        regions, departments
+        )
     referendum_and_areas = merge_referendum_and_areas(
         referendum, regions_and_departments
     )
-    referendum_results = compute_referendum_result_by_regions(referendum_and_areas)
+    referendum_results = compute_referendum_result_by_regions(
+        referendum_and_areas
+        )
 
     print(referendum_results)
     plot_referendum_map(referendum_results)
@@ -129,3 +135,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
